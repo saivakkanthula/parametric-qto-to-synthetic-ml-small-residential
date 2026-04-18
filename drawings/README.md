@@ -21,7 +21,7 @@ The 49 architectural drawings used in this research are sourced from the digitiz
 
 -Of the 49 drawings:
 
-  * 28 were modelled in Revit with help of visual programming in Dynamo (see [revit](/revit)
+  * 28 were modelled in Revit with help of visual programming in Dynamo (see [revit](/revit))
   
   * All 49 were processed for QTO and included in the final dataset (see [dataset](/dataset))
 
