@@ -2,14 +2,14 @@ The 49 architectural drawings used in this research are sourced from the digitiz
 
 <br/>
 <strong>About the Collection</strong> <br/>
-**Name:** Digitized collection of CMHC small and modest house plans held by the Housing Knowledge Centre of CMHC = La collection numérisée des plans de logement de la SCHL, petits et modestes, détenue par le Centre du savoir sur le logement de la SCHL.<br/>
-**Authors:** Canada Mortgage and Housing Corporation (CMHC), and Central Mortgage and Housing Corporation.<br/>
-**Collection URLs:** <br/>
+<strong>Name:</strong> Digitized collection of CMHC small and modest house plans held by the Housing Knowledge Centre of CMHC = La collection numérisée des plans de logement de la SCHL, petits et modestes, détenue par le Centre du savoir sur le logement de la SCHL.<br/>
+<strong>Authors:</strong> Canada Mortgage and Housing Corporation (CMHC), and Central Mortgage and Housing Corporation.<br/>
+<strong>Collection URLs:</strong> <br/>
 [CMHC small and modest house plans](https://cmhc.ent.sirsidynix.net/client/en_US/CMHCLibrary/search/detailnonmodal/ent:$002f$002fSD_ILS$002f0$002fSD_ILS:111654/email?qu=house+plan+catalogues&te=ILS) and <br/>
 [Blueprints for working drawings](https://www.cmhc-schl.gc.ca/chic/Listing?item_ID={0477DADE-ECFB-439E-8A22-F3EA775CDECD}&_gl=1*djb04*_ga*NTIyMDY1NDYzLjE3NzY1MTM0MDU.*_ga_7S87E8K748*czE3NzY1MTM0MDckbzEkZzAkdDE3NzY1MTM0MDkkajU4JGwwJGgw) <br/>
-**Contact:** [Housing_Knowledge_Centre@cmhc.ca](Housing_Knowledge_Centre@cmhc.ca)<br/>
+<strong>Contact:</strong> [Housing_Knowledge_Centre@cmhc.ca](Housing_Knowledge_Centre@cmhc.ca)<br/>
 <br/>
-**The Selected Drawings** <br/>
+<strong>The Selected Drawings</strong><br/>
 Of the available repository, 49 drawings from the period 1960 to 1974 were selected.<br/>
 These drawings were selected on the basis that Part-9 of NBC was formally introduced into building codes from NBC, 1960.<br/>
 The drawings cover One-storey, One-and-Half storey, and Two-storey buildings. <br/>
@@ -17,5 +17,5 @@ Of the 49 drawings:<br/>
   - 28 were modelled in Revit with help of visual programming in Dynamo (see [revit](/revit))<br/>
   - All 49 were processed for QTO and included in the final dataset (see [dataset](/dataset))<br/>
 <br/>
-**Index of Selected Drawings**<br/>
+<strong>Index of Selected Drawings</strong><br/>
 |Serial Number| Drawing Title| Year| Number of Floors|
