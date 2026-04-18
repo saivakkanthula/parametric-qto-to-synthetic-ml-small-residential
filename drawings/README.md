@@ -26,7 +26,10 @@ The 49 architectural drawings used in this research are sourced from the digitiz
   
   * All 49 were processed for QTO and included in the final dataset (see [dataset](/dataset))
 
---
+---
+
 **Index of Selected Drawings**
 
-|Serial Number| Drawing Title| Year| Number of Floors|
+|Serial Number|Drawing Title|Year|Number of Floors|
+|:------------|:------------|:---|:---------------|
+|1            | | | |
