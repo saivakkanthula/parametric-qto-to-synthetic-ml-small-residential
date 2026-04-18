@@ -1,4 +1,6 @@
-The 49 architectural drawings used in this research are sourced from the digitized collection of Canada Mortgage and Housing Corporation (CMHC) small and modest house plans, which are copyright works published by a federal Crown corporation. Rather than reproducing or redistributing the drawings, this repository links directly to their original records on the CMHC Housing Knowledge Centre catalogue.  
+The 49 architectural drawings used in this research are sourced from the digitized collection of Canada Mortgage and Housing Corporation (CMHC) small and modest house plans, which are copyright works published by a federal Crown corporation. Rather than reproducing or redistributing the drawings, this repository links directly to their original records on the CMHC Housing Knowledge Centre catalogue.<br/>
+
+<br/>
 **About the Collection**
 **Name:** Digitized collection of CMHC small and modest house plans held by the Housing Knowledge Centre of CMHC = La collection numérisée des plans de logement de la SCHL, petits et modestes, détenue par le Centre du savoir sur le logement de la SCHL.
 **Authors:** Canada Mortgage and Housing Corporation (CMHC), and Central Mortgage and Housing Corporation.
