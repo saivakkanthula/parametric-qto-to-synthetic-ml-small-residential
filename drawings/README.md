@@ -7,7 +7,6 @@ The 49 architectural drawings used in this research are sourced from the digitiz
 **Authors:** Canada Mortgage and Housing Corporation (CMHC), and Central Mortgage and Housing Corporation.
 
 **Collection URLs:**
-
 [CMHC small and modest house plans](https://cmhc.ent.sirsidynix.net/client/en_US/CMHCLibrary/search/detailnonmodal/ent:$002f$002fSD_ILS$002f0$002fSD_ILS:111654/email?qu=house+plan+catalogues&te=ILS) and [Blueprints for working drawings](https://www.cmhc-schl.gc.ca/chic/Listing?item_ID={0477DADE-ECFB-439E-8A22-F3EA775CDECD}&_gl=1*djb04*_ga*NTIyMDY1NDYzLjE3NzY1MTM0MDU.*_ga_7S87E8K748*czE3NzY1MTM0MDckbzEkZzAkdDE3NzY1MTM0MDkkajU4JGwwJGgw) 
 
 **Contact:** [Housing_Knowledge_Centre@cmhc.ca](Housing_Knowledge_Centre@cmhc.ca)
@@ -26,6 +25,14 @@ The 49 architectural drawings used in this research are sourced from the digitiz
   
   * All 49 were processed for QTO and included in the final dataset (see [dataset](/dataset))
 
+
+
+**Copyright Notice**
+
+These drawings are Crown copyright works. They are reproduced here for non-commercial academic research purposes only by linking to the original CMHC records. 
+
+**No drawing files are hosted or redistributed in this repository.**
+
 ---
 
 **Index of Selected Drawings**
@@ -33,3 +40,51 @@ The 49 architectural drawings used in this research are sourced from the digitiz
 |Serial Number|Drawing Title|Year|Number of Floors|
 |:------------|:------------|:---|:---------------|
 |1            | | | |
+|2            | | | |
+|3            | | | |
+|4            | | | |
+|5            | | | |
+|6            | | | |
+|7            | | | |
+|8            | | | |
+|9            | | | |
+|10           | | | |
+|11           | | | |
+|12           | | | |
+|13           | | | |
+|14           | | | |
+|15           | | | |
+|16           | | | |
+|17           | | | |
+|18           | | | |
+|19           | | | |
+|20           | | | |
+|21           | | | |
+|22           | | | |
+|23           | | | |
+|24           | | | |
+|25           | | | |
+|26           | | | |
+|27           | | | |
+|28           | | | |
+|29           | | | |
+|30           | | | |
+|31           | | | |
+|32           | | | |
+|33           | | | |
+|34           | | | |
+|35           | | | |
+|36           | | | |
+|37           | | | |
+|38           | | | |
+|39           | | | |
+|40           | | | |
+|41           | | | |
+|42           | | | |
+|43           | | | |
+|44           | | | |
+|45           | | | |
+|46           | | | |
+|47           | | | |
+|48           | | | |
+|49           | | | |
