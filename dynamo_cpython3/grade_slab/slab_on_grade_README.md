@@ -1,62 +1,139 @@
+# Slab-on-Grade — Segment Dictionary (`slab_on_grade_segment_dictionary.py`)
 
-Slab-on-Grade / Walkway Slab Generation
-========================================
+## Purpose
 
-Generates slab-on-grade floors (and optional openings) using a
-Manhattan (axis-aligned) segment-based layout system.
+Defines the input dictionary consumed by the executor script.
+Each entry describes one slab-on-grade floor: its Revit level, thickness,
+start point, outline segments, and optional openings.
 
-Geometry Principle
-------------------
-The slab outline is defined using a sequence of segments starting from a base
-start point. Each segment moves along either the X or Y axis.
+---
 
-The raw outline is constructed as follows:
+## Dynamo Inputs
 
-1. Start from the base start point::
+| Port  | Variable  | Type    | Description                                                     |
+|-------|-----------|---------|-----------------------------------------------------------------|
+| IN[0] | `x_scale` | `float` | Scales all variable lengths of Segments parallel to X-axis      |
+| IN[1] | `y_scale` | `float` | Scales all variable lengths of Segments parallel to Y-axis      |
 
-       X = x_fixed_ft + x_variable_ft * x_scale
-       Y = y_fixed_ft + y_variable_ft * y_scale
+`x_scale` and `y_scale` represent the parametric dimensions of the building
+footprint. These indicate the percentage by which the rectangle enclosing the 
+building footptint is scaled up or down. 
 
-2. For each segment:
-   - Move along its axis (``"x"`` or ``"y"``)
-   - Direction is given by (``"+"`` or ``"-"``)
-   - Segment length is::
+Fixed dimensions are unaffected by these values.
 
-         length = length_fixed_ft + length_variable_ft * axis_scale
+---
 
-3. This produces a raw Manhattan outline (outer reference shape).
+## Dictionary Schema
 
-Offset Logic
-------------
-Each segment defines a point-based offset using ``x_offset_ft`` and
-``y_offset_ft``. These offsets are applied to the **start point** of each
-segment.
+```
+slab_on_grade_floors = {
 
-.. important::
+    "floor_1": {
 
-   - Offsets modify the corner points, not segment lengths.
-   - The start point of a segment is also the end point of the previous
-     segment. Applying an offset therefore affects both the current segment
-     start and the previous segment end.
-   - Since the outline is closed, the last segment end connects back to the
-     first segment start, so offsets also affect closure consistency.
+        "level"        : <Revit Level object>   # Level the slab is placed on
+        "thickness_ft" : <float>                # Slab thickness in feet
+        "has_openings" : <bool>                 # True if opening sub-dicts are present
 
-``forms_outline`` Flag
-----------------------
-Each segment carries a ``forms_outline`` boolean. Only segments where
-``forms_outline`` is ``True`` are used to build the final slab boundary.
+        "start_point": {
+            "x_fixed_ft"    : <float>           # Fixed X component of start point (ft)
+            "x_variable_ft" : <float>           # X component scaled by x_scale (ft)
+            "y_fixed_ft"    : <float>           # Fixed Y component of start point (ft)
+            "y_variable_ft" : <float>           # Y component scaled by y_scale (ft)
+        }
 
-Openings
---------
-Openings follow the same segment logic as the main slab. Each opening:
+        "segments": {
+            "segment_1": {
+                "axis"               : "x" or "y"   # Movement axis
+                "direction"          : "+" or "-"   # Movement direction
+                "length_fixed_ft"    : <float>      # Fixed component of segment length (ft)
+                "length_variable_ft" : <float>      # Variable component, scaled by axis scale (ft)
+                "x_offset_ft"        : <float>      # X correction at this segment's start point (ft)
+                "y_offset_ft"        : <float>      # Y correction at this segment's start point (ft)
+                "forms_outline"      : <bool>       # True to include in final slab boundary
+            }
+            # ...
+        }
 
-- has its own segment set,
-- uses the **same** start-point reference as the parent floor,
-- generates a closed profile, and
-- is cut from the slab using Revit opening tools.
+        "opening_1": {                              # Only needed when has_openings = True
+            "segment_1": {
+                "axis"               : "x" or "y"
+                "direction"          : "+" or "-"
+                "length_fixed_ft"    : <float>
+                "length_variable_ft" : <float>
+                "x_offset_ft"        : <float>
+                "y_offset_ft"        : <float>
+                "forms_outline"      : <bool>
+            }
+            # ...
+        }
 
-Notes
------
-- All units are in feet unless otherwise specified.
-- All offsets must be provided with the correct sign.
+        # "opening_2": { ... }
+    }
+
+    # "floor_2": { ... }
+}
+```
+
+---
+
+## Geometry Principles
+
+### Start Point
+
+The absolute origin of the segment chain is computed as:
+
+```
+X = x_fixed_ft + x_variable_ft * x_scale
+Y = y_fixed_ft + y_variable_ft * y_scale
+```
+
+### Segment Length
+
+Each segment moves along one axis by:
+
+```
+length = length_fixed_ft + length_variable_ft * axis_scale
+```
+
+where `axis_scale` is `x_scale` for X-axis segments and `y_scale` for Y-axis segments.
+
+### Offset Logic
+
+Offsets are applied independently to the **start point** of each segment
+(i.e. to the raw corner produced by the Manhattan walk, not to the previous
+segment's corrected end). A segment's offset therefore shifts:
+
+- where the **current** segment starts, and
+- where the **previous** segment ends.
+- **In other words to preserve the 90° corner between two adjacent segments, the offset component along their shared axis must be equal.
+  A Y-axis segment and the following X-axis segment must share the same x_offset_ft; an X-axis segment and the following Y-axis segment must share the same y_offset_ft.
+  Violating this constraint will produce a slanted segment.**
+
+This allows slab edges to be inset from foundation walls without modifying
+segment lengths.
+
+### `forms_outline` Flag
+
+Only segments with `forms_outline = True` contribute to the final closed
+boundary. Segments with `forms_outline = False` still participate in the
+raw Manhattan walk (their lengths affect subsequent corner positions) but
+are excluded from the Revit profile.
+
+**This allows a single segment chain to describe multiple discontinuous slab regions — for example, two separate grade slabs or an interior slab and an exterior walkway that do not share an edge. Segments with `forms_outline = False` act as positional steps that advance the walk across the gap, keeping all geometry within one coordinate reference without forcing a shared boundary.**
+
+### Openings
+
+Each opening uses the **same start point** as its parent floor. Opening
+segments follow identical rules to main outline segments. The executor
+detects opening sub-dicts by their `opening_` key prefix.
+
+---
+
+## Notes
+
+- All dimensions are in feet unless otherwise stated.
+- All offsets must carry the correct sign.
+- Segment keys must end in an integer suffix (`segment_1`, `segment_2`, …);
+  they are processed in ascending numerical order.
+- Opening keys must follow the same convention (`opening_1`, `opening_2`, …).
 - The caller is responsible for the geometric correctness of the input.
