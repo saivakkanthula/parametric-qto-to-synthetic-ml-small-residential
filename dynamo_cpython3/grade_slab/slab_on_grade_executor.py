@@ -5,7 +5,7 @@
 # INPUTS
 #   IN[0] : x_scale       (float)
 #   IN[1] : y_scale       (float)
-#   IN[2] : floors_dict   (dict)  -- see slab_on_grade.py for schema
+#   IN[2] : floors_dict   (dict)  -- see slab_on_grade_segment_dictionary.py for schema
 #
 # OUTPUT
 #   OUT = (floors_out, openings_out, failed_items, debug)
