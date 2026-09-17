@@ -6,5 +6,5 @@
     - In the first step user defines the outline i.e. the placement path of foundation walls or grade slabs.
     - In the second step, output from the first step is fed to the second script which then generates the actual Revit Element.
 
--Detailed instructions on how to use the scripts are provided inside the individual folders
+- Detailed instructions on how to use the scripts are provided inside the individual folders
 
